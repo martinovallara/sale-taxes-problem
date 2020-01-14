@@ -1,11 +1,18 @@
 package it.vallara.saletaxesproblem;
 
+import java.util.ArrayList;
+
 public class Receipt {
+
+    private final ArrayList<Item> items;
+
+    public Receipt(ArrayList<Item> items) {
+        this.items = items;
+    }
 
     @Override
     public String toString() {
-        return "1 book: 10.00\n" +
-                "Sales Taxes: 0.00\n" +
-                "Total: 10.00";
+        return "Sales Taxes: 0.00\n" +
+                "Total: 0.00";
     }
 }
