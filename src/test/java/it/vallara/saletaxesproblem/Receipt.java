@@ -11,19 +11,17 @@ public class Receipt {
     }
 
     @Override
-    public String toString() {
-        String itemsSummary = "";
+    public java.lang.String toString() {
+        StringBuilder itemsSummary = new StringBuilder();
         String summary;
-        if (!items.isEmpty()) {
-            itemsSummary = items.get(0).toString();
-            summary = String.format("Sales Taxes: 0.00\n" +
-                    "Total: %.2f", items.get(0).price());
-        } else {
 
-            summary = String.format("Sales Taxes: 0.00\n" +
-                    "Total: %.2f", 0.0);
-        }
+        items.stream().forEach(i -> itemsSummary.append(i.toString()));
+        summary = String.format("Sales Taxes: 0.00\n" +
+                "Total: %.2f", items.stream()
+                .map(i -> i.price())
+                .reduce(0.0, Double::sum));
 
-        return itemsSummary + summary;
+        itemsSummary.append(summary);
+        return itemsSummary.toString();
     }
 }
