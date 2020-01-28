@@ -2,9 +2,14 @@ package it.vallara.saletaxesproblem;
 
 public class Item {
     private int count;
+    private double price;
+    private String description;
 
     public Item(String line) {
-        count = Integer.parseInt(line.split(" ")[0]);
+        String[] lineArgs = line.split(" ");
+        count = Integer.parseInt(lineArgs[0]);
+        description = lineArgs[1].split("at ")[0];
+        price = Double.parseDouble(line.split("at ")[1]);
     }
 
     @Override
@@ -12,12 +17,11 @@ public class Item {
         return String.format("%d %s: %.2f", +
                         count(),
                 description(),
-                price());
-
+                totalPrice());
     }
 
-    public double price() {
-        return 12.49 * count;
+    public double totalPrice() {
+        return price * count;
     }
 
     public int count() {
@@ -25,6 +29,6 @@ public class Item {
     }
 
     public String description() {
-        return "book";
+        return description;
     }
 }
