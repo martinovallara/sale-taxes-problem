@@ -15,7 +15,7 @@ public class ReceiptTest {
         Receipt receipt = new Receipt(new ArrayList<Item>());
         String expected =
                 "Sales Taxes: 0.00\n" +
-                "Total: 0.00";
+                        "Total: 0.00";
 
         assertThat(receipt.toString(), Is.is(expected));
 
@@ -25,12 +25,12 @@ public class ReceiptTest {
     public void should_build_receipt_when_one_item() {
 
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("1 book at 12.49"));
+        items.add(new Item(1, "book", 12.49));
         Receipt receipt = new Receipt(items);
 
         String expected =
-                "1 book: 12.49" +
-                "Sales Taxes: 0.00\n" +
+                "1 book: 12.49\n" +
+                        "Sales Taxes: 0.00\n" +
                         "Total: 12.49";
 
         assertThat(receipt.toString(), Is.is(expected));
@@ -41,11 +41,11 @@ public class ReceiptTest {
     public void should_build_receipt_when_two_item() {
 
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item("2 book at 12.49"));
+        items.add(new Item(2, "book", 12.49));
         Receipt receipt = new Receipt(items);
 
         String expected =
-                "2 book: 24.98" +
+                "2 book: 24.98\n" +
                         "Sales Taxes: 0.00\n" +
                         "Total: 24.98";
 

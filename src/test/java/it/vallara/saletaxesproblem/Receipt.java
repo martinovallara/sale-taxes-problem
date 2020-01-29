@@ -15,7 +15,7 @@ public class Receipt {
         StringBuilder itemsSummary = new StringBuilder();
         String summary;
 
-        items.stream().forEach(i -> itemsSummary.append(i.toString()));
+        items.stream().forEach(i -> itemsSummary.append(i.toString() + "\n"));
         summary = String.format("Sales Taxes: 0.00\n" +
                 "Total: %.2f", items.stream()
                 .map(i -> i.totalPrice())

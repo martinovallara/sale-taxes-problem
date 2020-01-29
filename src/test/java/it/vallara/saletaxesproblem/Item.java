@@ -5,11 +5,10 @@ public class Item {
     private double price;
     private String description;
 
-    public Item(String line) {
-        String[] lineArgs = line.split(" ");
-        count = Integer.parseInt(lineArgs[0]);
-        description = lineArgs[1].split("at ")[0];
-        price = Double.parseDouble(line.split("at ")[1]);
+    public Item(int count, String description, double price) {
+        this.count = count;
+        this.description = description;
+        this.price = price;
     }
 
     @Override
