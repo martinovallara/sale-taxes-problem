@@ -26,7 +26,11 @@ public class Product {
     }
 
     public double totalPrice() {
-        return price * quantity + taxRate * price;
+        return price * quantity + totalTaxes();
+    }
+
+    private double totalTaxes() {
+        return quantity * taxRate * price;
     }
 
     public int quantity() {
