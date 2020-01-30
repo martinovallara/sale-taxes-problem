@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class ReceiptTest {
 
     @Test
-    public void should_build_empty_receipt_when_empty_items() {
+    public void should_build_empty_receipt_when_empty_products() {
         Receipt receipt = new Receipt();
         String expected =
                 "Sales Taxes: 0.00\n" +
@@ -18,9 +18,9 @@ public class ReceiptTest {
     }
 
     @Test
-    public void should_build_receipt_when_one_item() {
+    public void should_build_receipt_when_one_product() {
         Receipt receipt = new Receipt();
-        receipt.addItem(new Item(1, "book" , 12.49));
+        receipt.addProduct(new Product(1, "book" , 12.49));
         String expected =
                 "1 book: 12.49\n" +
                         "Sales Taxes: 0.00\n" +
@@ -30,9 +30,9 @@ public class ReceiptTest {
     }
 
     @Test
-    public void should_build_receipt_when_two_items() {
+    public void should_build_receipt_when_two_products() {
         Receipt receipt = new Receipt();
-        receipt.addItem(new Item(2, "book", 12.49));
+        receipt.addProduct(new Product(2, "book", 12.49));
         String expected =
                 "2 book: 24.98\n" +
                         "Sales Taxes: 0.00\n" +

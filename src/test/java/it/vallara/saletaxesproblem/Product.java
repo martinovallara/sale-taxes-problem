@@ -1,12 +1,12 @@
 package it.vallara.saletaxesproblem;
 
-public class Item {
-    private int count;
+public class Product {
+    private int quantity;
     private double price;
     private String description;
 
-    public Item(int count, String description, double price) {
-        this.count = count;
+    public Product(int quantity, String description, double price) {
+        this.quantity = quantity;
         this.description = description;
         this.price = price;
     }
@@ -14,17 +14,17 @@ public class Item {
     @Override
     public String toString() {
         return String.format("%d %s: %.2f", +
-                        count(),
+                        quantity(),
                 description(),
                 totalPrice());
     }
 
     public double totalPrice() {
-        return price * count;
+        return price * quantity;
     }
 
-    public int count() {
-        return count;
+    public int quantity() {
+        return quantity;
     }
 
     public String description() {

@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
 public class LineParser {
 
 
-    public Item parse(String line)
+    public Product parse(String line)
     {
         List<String> lineArgs = Arrays.asList( line.split(" "));
-        int count = Integer.parseInt(lineArgs.get(0));
+        int quantity = Integer.parseInt(lineArgs.get(0));
         List<String> wordWithoutQuantity = new ArrayList(lineArgs.stream().skip(1).collect(Collectors.toList()));
-        String itemWithoutQuantity = String.join(" ", wordWithoutQuantity);
-        String description = itemWithoutQuantity.split("at ")[0].trim();
+        String productWithoutQuantity = String.join(" ", wordWithoutQuantity);
+        String description = productWithoutQuantity.split("at ")[0].trim();
         double price = Double.parseDouble(line.split("at ")[1]);
 
-        return new Item(count, description, price);
+        return new Product(quantity, description, price);
     }
 }

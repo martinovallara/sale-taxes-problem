@@ -4,30 +4,30 @@ import java.util.ArrayList;
 
 public class Receipt {
 
-    private final ArrayList<Item> items;
+    private final ArrayList<Product> products;
 
     public Receipt() {
-        this.items = new ArrayList<Item>();
+        this.products = new ArrayList<Product>();
     }
 
-    public void addItem(Item item) {
-        items.add(item);
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
     @Override
     public java.lang.String toString() {
-        StringBuilder itemsSummary = new StringBuilder();
+        StringBuilder productsSummary = new StringBuilder();
         String summary;
 
-        items.stream().forEach(i -> itemsSummary.append(i.toString() + "\n"));
+        products.stream().forEach(i -> productsSummary.append(i.toString() + "\n"));
 
         summary = String.format("Sales Taxes: 0.00\n" +
-                "Total: %.2f", items.stream()
+                "Total: %.2f", products.stream()
                 .map(i -> i.totalPrice())
                 .reduce(0.0, Double::sum));
 
-        itemsSummary.append(summary);
-        return itemsSummary.toString();
+        productsSummary.append(summary);
+        return productsSummary.toString();
     }
 
 

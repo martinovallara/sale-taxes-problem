@@ -1,7 +1,5 @@
 package it.vallara.saletaxesproblem;
 
-import java.util.ArrayList;
-
 public class CashRegister {
     private final LineParser lineParser;
     private final Receipt receipt;
@@ -11,8 +9,8 @@ public class CashRegister {
         receipt = new Receipt();
     }
 
-    public void AddItemLine(String itemLine) {
-        receipt.addItem(lineParser.parse(itemLine));
+    public void addProductLine(String productLine) {
+        receipt.addProduct(lineParser.parse(productLine));
     }
 
     public String generateReceipt() {
