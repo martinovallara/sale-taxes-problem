@@ -9,7 +9,6 @@ import static org.junit.Assert.assertThat;
 public class CashRegisterTest {
 
     @Test
-    @Ignore
     public void should_print_receipt_without_taxes_for_a_book() {
         String input = "1 book at 10.00";
 
