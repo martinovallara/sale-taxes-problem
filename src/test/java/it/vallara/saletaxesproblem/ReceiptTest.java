@@ -20,7 +20,7 @@ public class ReceiptTest {
     @Test
     public void should_build_receipt_when_one_item() {
         Receipt receipt = new Receipt();
-        receipt.addItem("1 book at 12.49");
+        receipt.addItem(new Item(1, "book" , 12.49));
         String expected =
                 "1 book: 12.49\n" +
                         "Sales Taxes: 0.00\n" +
@@ -32,7 +32,7 @@ public class ReceiptTest {
     @Test
     public void should_build_receipt_when_two_item() {
         Receipt receipt = new Receipt();
-        receipt.addItem("2 book at 12.49");
+        receipt.addItem(new Item(2, "book", 12.49));
         String expected =
                 "2 book: 24.98\n" +
                         "Sales Taxes: 0.00\n" +
