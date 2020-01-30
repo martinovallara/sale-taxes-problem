@@ -23,7 +23,7 @@ public class CashRegisterTest {
     }
 
     @Test
-    public void should_print_receipt_for_product_with_taxes() {
+    public void should_print_receipt_for_taxed_musicCD() {
         String input = "1 music CD at 10.00";
 
         String expected =
