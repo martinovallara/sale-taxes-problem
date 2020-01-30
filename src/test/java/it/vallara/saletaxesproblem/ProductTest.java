@@ -20,4 +20,10 @@ public class ProductTest {
 
         assertThat(product.totalPrice(), Is.is(10.0));
     }
+
+    @Test
+    public void totalPrice_should_include_taxes_for_one_quantity_of_taxed_product() {
+        Product product = new Product(1, "any desc", 5, 0.1);
+        assertThat(product.totalPrice(), Is.is(5.5));
+    }
 }
