@@ -14,6 +14,7 @@ public class LineParserTest {
 
     @Test
     public void should_parse_count_description_with_space_and_price() {
+        //todo: Attezione "music CD" ha le tasse!
         Item item = parser.parse("1 music CD at 14.99");
         Item expectedItem = new Item(1, "music CD", 14.99);
 

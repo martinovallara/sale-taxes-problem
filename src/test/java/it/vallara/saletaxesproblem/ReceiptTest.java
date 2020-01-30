@@ -30,7 +30,7 @@ public class ReceiptTest {
     }
 
     @Test
-    public void should_build_receipt_when_two_item() {
+    public void should_build_receipt_when_two_items() {
         Receipt receipt = new Receipt();
         receipt.addItem(new Item(2, "book", 12.49));
         String expected =
