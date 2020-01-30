@@ -40,4 +40,16 @@ public class ReceiptTest {
 
         assertThat(receipt.toString(), Is.is(expected));
     }
+
+    @Test
+    public void should_build_receipt_when_two_taxed_products() {
+        Receipt receipt = new Receipt();
+        receipt.addProduct(new Product(2, "music CD", 10.0, 0.1));
+        String expected =
+                "2 music CD: 22.00\n" +
+                        "Sales Taxes: 2.00\n" +
+                        "Total: 22.00";
+
+        assertThat(receipt.toString(), Is.is(expected));
+    }
 }

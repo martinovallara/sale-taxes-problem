@@ -21,10 +21,14 @@ public class Receipt {
 
         products.stream().forEach(i -> productsSummary.append(i.toString() + "\n"));
 
-        summary = String.format("Sales Taxes: 0.00\n" +
-                "Total: %.2f", products.stream()
-                .map(i -> i.totalPrice())
-                .reduce(0.0, Double::sum));
+        summary = String.format("Sales Taxes: %.2f\n" +
+                        "Total: %.2f",
+                products.stream()
+                        .map(p -> p.totalTaxes())
+                        .reduce(0.0, Double::sum),
+                products.stream()
+                        .map(i -> i.totalPrice())
+                        .reduce(0.0, Double::sum));
 
         productsSummary.append(summary);
         return productsSummary.toString();

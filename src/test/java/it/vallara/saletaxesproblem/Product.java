@@ -29,7 +29,7 @@ public class Product {
         return price * quantity + totalTaxes();
     }
 
-    private double totalTaxes() {
+    public double totalTaxes() {
         return quantity * taxRate * price;
     }
 
