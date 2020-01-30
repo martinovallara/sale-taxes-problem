@@ -22,7 +22,6 @@ public class CashRegisterTest {
         assertThat(cash.generateReceipt(), is(expected));
     }
 
-    @Ignore
     @Test
     public void should_print_receipt_for_product_with_taxes() {
         String input = "1 music CD at 10.00";
