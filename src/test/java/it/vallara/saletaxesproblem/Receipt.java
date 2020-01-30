@@ -5,9 +5,15 @@ import java.util.ArrayList;
 public class Receipt {
 
     private final ArrayList<Item> items;
+    private final LineParser lineParser;
 
-    public Receipt(ArrayList<Item> items) {
-        this.items = items;
+    public Receipt() {
+        this.lineParser = new LineParser();
+        this.items = new ArrayList<Item>();
+    }
+
+    public void addItem(String itemInput) {
+        items.add(lineParser.parse(itemInput));
     }
 
     @Override
@@ -24,4 +30,6 @@ public class Receipt {
         itemsSummary.append(summary);
         return itemsSummary.toString();
     }
+
+
 }
