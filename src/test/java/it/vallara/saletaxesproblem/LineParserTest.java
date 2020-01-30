@@ -27,8 +27,8 @@ public class LineParserTest {
     public void should_parse_quantity_two_digits_description_a_word_and_price() {
         Product product = parser.parse("10 book at 100.88");
         Product expectedProduct = new Product(10, "book", 100.88);
-//todo: invertire parametri dell'assert
-        assertThat(expectedProduct.toString(), Is.is(product.toString()));
+
+        assertThat(product.toString(), Is.is(expectedProduct.toString()));
     }
 
     @Test
