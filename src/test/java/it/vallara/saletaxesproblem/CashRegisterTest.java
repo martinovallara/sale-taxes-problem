@@ -35,4 +35,20 @@ public class CashRegisterTest {
         cash.addProductLine(input);
         assertThat(cash.generateReceipt(), is(expected));
     }
+
+    @Ignore
+    @Test
+    public void should_print_receipt_for_taxed_pen() {
+
+        String input = "1 pen CD at 11.00";
+
+        String expected =
+                "1 pen CD: 11.00\n" +
+                        "Sales Taxes: 1.00\n" +
+                        "Total: 11.00";
+
+        CashRegister cash = new CashRegister();
+        cash.addProductLine(input);
+        assertThat(cash.generateReceipt(), is(expected));
+    }
 }
