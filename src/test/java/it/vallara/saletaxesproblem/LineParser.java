@@ -8,6 +8,17 @@ import java.util.stream.Collectors;
 
 public class LineParser {
 
+    private List<String> taxfreeProducts;
+
+    public LineParser() {
+        taxfreeProducts = Arrays.asList(new String[]{
+                "book",
+                "apple",
+                "cache",
+                "milk",
+                "headache pills"
+        });
+    }
 
     public Product parse(String line) {
         List<String> lineArgs = Arrays.asList(line.split(" "));
@@ -16,8 +27,9 @@ public class LineParser {
         String productWithoutQuantity = String.join(" ", wordWithoutQuantity);
         String description = productWithoutQuantity.split("at ")[0].trim();
         double price = Double.parseDouble(line.split("at ")[1]);
-
-        if (description.equals("music CD")) return new Product(quantity, description, price, 0.1);
-        return new Product(quantity, description, price);
+        System.out.println("--->" + description);
+        if (taxfreeProducts.contains(description))
+            return new Product(quantity, description, price);
+        return new Product(quantity, description, price, 0.1);
     }
 }

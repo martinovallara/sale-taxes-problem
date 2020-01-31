@@ -3,10 +3,15 @@ package it.vallara.saletaxesproblem;
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertThat;
 
 public class LineParserTest {
+
     LineParser parser;
 
     @Before
@@ -16,7 +21,6 @@ public class LineParserTest {
 
     @Test
     public void should_parse_quantity_description_with_space_and_price() {
-        //todo: Attezione "music CD" ha le tasse!
         Product product = parser.parse("1 book at 14.99");
         Product expectedProduct = new Product(1, "book", 14.99);
 
