@@ -6,18 +6,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class LineParser {
 
-    private List<String> taxfreeProducts;
 
-    public LineParser() {
-        taxfreeProducts = Arrays.asList(new String[]{
-                "book",
-                "apple",
-                "cache",
-                "milk",
-                "headache pills"
-        });
+    private String description;
+    private ProductFactory productFactory;
+
+    public LineParser(ProductFactory productFactory) {
+        this.productFactory = productFactory;
     }
 
     public Product parse(String line) {
@@ -25,11 +22,12 @@ public class LineParser {
         int quantity = Integer.parseInt(lineArgs.get(0));
         List<String> wordWithoutQuantity = new ArrayList(lineArgs.stream().skip(1).collect(Collectors.toList()));
         String productWithoutQuantity = String.join(" ", wordWithoutQuantity);
-        String description = productWithoutQuantity.split("at ")[0].trim();
+        description = productWithoutQuantity.split("at ")[0].trim();
         double price = Double.parseDouble(line.split("at ")[1]);
-        System.out.println("--->" + description);
-        if (taxfreeProducts.contains(description))
-            return new Product(quantity, description, price);
-        return new Product(quantity, description, price, 0.1);
+
+
+        return productFactory.build(quantity, description, price);
     }
+
+
 }

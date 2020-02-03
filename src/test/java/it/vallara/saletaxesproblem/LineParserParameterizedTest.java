@@ -20,7 +20,7 @@ public class LineParserParameterizedTest {
 
     @Before
     public void setUp() {
-        parser = new LineParser();
+        parser = new LineParser(new ProductFactory());
     }
 
     public LineParserParameterizedTest(String product, Double expectedTaxRate) {

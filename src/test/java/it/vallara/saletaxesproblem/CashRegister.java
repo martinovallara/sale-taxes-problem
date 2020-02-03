@@ -4,9 +4,13 @@ public class CashRegister {
     private final LineParser lineParser;
     private final Receipt receipt;
 
-    public CashRegister() {
-        lineParser = new LineParser();
-        receipt = new Receipt();
+    public static CashRegister CashRegisterFactory() {
+        return new CashRegister(new Receipt(), new LineParser(new ProductFactory()));
+    }
+
+    public CashRegister(Receipt receipt, LineParser lineParser) {
+        this.lineParser = lineParser;
+        this.receipt = receipt;
     }
 
     public void addProductLine(String productLine) {

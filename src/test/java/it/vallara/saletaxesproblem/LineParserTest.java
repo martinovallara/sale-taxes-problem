@@ -3,10 +3,6 @@ package it.vallara.saletaxesproblem;
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 import static org.junit.Assert.assertThat;
 
@@ -16,7 +12,7 @@ public class LineParserTest {
 
     @Before
     public void setUp() {
-        parser = new LineParser();
+        parser = new LineParser(new ProductFactory());
     }
 
     @Test

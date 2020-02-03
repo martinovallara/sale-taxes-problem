@@ -17,7 +17,7 @@ public class CashRegisterTest {
                         "Sales Taxes: 0.00\n" +
                         "Total: 10.00";
 
-        CashRegister cash = new CashRegister();
+        CashRegister cash = CashRegister.CashRegisterFactory();
         cash.addProductLine(input);
         assertThat(cash.generateReceipt(), is(expected));
     }
@@ -31,7 +31,7 @@ public class CashRegisterTest {
                         "Sales Taxes: 1.00\n" +
                         "Total: 11.00";
 
-        CashRegister cash = new CashRegister();
+        CashRegister cash = CashRegister.CashRegisterFactory();
         cash.addProductLine(input);
         assertThat(cash.generateReceipt(), is(expected));
     }
@@ -46,7 +46,7 @@ public class CashRegisterTest {
                         "Sales Taxes: 1.10\n" +
                         "Total: 12.10";
 
-        CashRegister cash = new CashRegister();
+        CashRegister cash = CashRegister.CashRegisterFactory();
         cash.addProductLine(input);
         assertThat(cash.generateReceipt(), is(expected));
     }
