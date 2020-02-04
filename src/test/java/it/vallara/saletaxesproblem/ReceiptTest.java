@@ -20,7 +20,7 @@ public class ReceiptTest {
     @Test
     public void should_build_receipt_when_one_product() {
         Receipt receipt = new Receipt();
-        receipt.addProduct(new Product(1, "book" , 12.49));
+        receipt.addProduct(new Product(1, "book" ,  12.49, new TaxCalculator()));
         String expected =
                 "1 book: 12.49\n" +
                         "Sales Taxes: 0.00\n" +
@@ -32,7 +32,7 @@ public class ReceiptTest {
     @Test
     public void should_build_receipt_when_two_products() {
         Receipt receipt = new Receipt();
-        receipt.addProduct(new Product(2, "book", 12.49));
+        receipt.addProduct(new Product(2, "book",  12.49, new TaxCalculator()));
         String expected =
                 "2 book: 24.98\n" +
                         "Sales Taxes: 0.00\n" +
@@ -44,7 +44,7 @@ public class ReceiptTest {
     @Test
     public void should_build_receipt_when_two_taxed_products() {
         Receipt receipt = new Receipt();
-        receipt.addProduct(new Product(2, "music CD", 10.0, 0.1));
+        receipt.addProduct(new Product(2, "music CD", 10.0, new TaxCalculator()));
         String expected =
                 "2 music CD: 22.00\n" +
                         "Sales Taxes: 2.00\n" +

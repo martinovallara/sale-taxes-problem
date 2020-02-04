@@ -20,7 +20,7 @@ public class LineParserParameterizedTest {
 
     @Before
     public void setUp() {
-        parser = new LineParser(new ProductFactory());
+        parser = new LineParser(new ProductFactory(new TaxCalculator()));
     }
 
     public LineParserParameterizedTest(String product, Double expectedTaxRate) {
@@ -32,7 +32,7 @@ public class LineParserParameterizedTest {
     @Test
     public void should_create_a_product_with_tax_rate() {
         Product product = parser.parse("10 " + this.product + " at 5");
-        Product expectedProduct = new Product(10, this.product, 5.0, this.expectedTaxRate);
+        Product expectedProduct = new Product(10, this.product, 5.0, new ExpectedTaxRate(expectedTaxRate));
 
         assertThat(product.toString(), Is.is(expectedProduct.toString()));
     }
