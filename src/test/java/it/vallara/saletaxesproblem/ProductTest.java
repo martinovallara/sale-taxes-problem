@@ -10,14 +10,12 @@ public class ProductTest {
     @Test
     public void totalPrice_should_be_product_price_when_one_quantity() {
         Product product = BuildTaxFreeProduct(1, "any desc", 5);;
-
         assertThat(product.totalPrice(), Is.is(5.0));
     }
 
     @Test
     public void totalPrice_should_be_twice_the_product_price_when_two_quantities() {
         Product product = BuildTaxFreeProduct(2, "any desc", 5);
-
         assertThat(product.totalPrice(), Is.is(10.0));
     }
 
@@ -33,15 +31,19 @@ public class ProductTest {
         assertThat(product.totalPrice(), Is.is(11.0));
     }
 
-    private Product BuildTaxedProduct(int quantity, String description, int price) {
+    public static Product BuildTaxedProduct(int quantity, String description, double price) {
         return new Product(quantity, description, price, new TaxCalculator());
     }
 
-    private Product BuildTaxFreeProduct(int quantity, String description, int price) {
+    public static Product BuildTaxFreeProduct(int quantity, String description, double price) {
         return new Product(quantity, description, price, new TaxFreeCalculator());
     }
 
-    private static Product BuildFixedTaxedProduct(int quantity, String description, int price, double taxRate) {
+    public static Product BuildProduct(int quantity, String description, double price) {
+        return new Product(quantity, description, price, new TaxFreeCalculator());
+    }
+
+    public static Product BuildFixedTaxedProduct(int quantity, String description, double price, double taxRate) {
         return new Product(quantity, description, price, new ConstantTaxCalculator(taxRate));
     }
 }
