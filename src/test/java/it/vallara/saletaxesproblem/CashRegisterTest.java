@@ -1,6 +1,5 @@
 package it.vallara.saletaxesproblem;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

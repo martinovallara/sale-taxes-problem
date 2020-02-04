@@ -33,6 +33,9 @@ public class LineParserTest {
         assertThat(product.toString(), Is.is(expectedProduct.toString()));
     }
 
+
+    //todo: questo testo dopo il refactoring ha ancora senso? testa un comportamento di un collaboratore dell'output della classe di test.
+    //Può essere visto come un test di integrazione?
     @Test
     public void should_create_a_product_with_tax_rate() {
         Product product = parser.parse("10 music CD at 5");
@@ -40,5 +43,4 @@ public class LineParserTest {
 
         assertThat(product.toString(), Is.is(expectedProduct.toString()));
     }
-
 }

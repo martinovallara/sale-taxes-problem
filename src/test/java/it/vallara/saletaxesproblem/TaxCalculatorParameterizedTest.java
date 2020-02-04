@@ -12,29 +12,26 @@ import java.util.Collection;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class LineParserParameterizedTest {
+public class TaxCalculatorParameterizedTest {
 
-    private final String product;
-    private final Double expectedTaxRate;
-    LineParser parser;
+    private final String description;
+    private final double expectedTaxRate;
+    private TaxCalculator taxCalculator;
 
     @Before
     public void setUp() {
-        parser = new LineParser(new ProductFactory(new TaxCalculator()));
+        taxCalculator = new TaxCalculator();
     }
 
-    public LineParserParameterizedTest(String product, Double expectedTaxRate) {
-
-        this.product = product;
+    public TaxCalculatorParameterizedTest(String description, double expectedTaxRate) {
+        this.description = description;
         this.expectedTaxRate = expectedTaxRate;
     }
 
     @Test
     public void should_create_a_product_with_tax_rate() {
-        Product product = parser.parse("10 " + this.product + " at 5");
-        Product expectedProduct = new Product(10, this.product, 5.0, new ExpectedTaxRate(expectedTaxRate));
 
-        assertThat(product.toString(), Is.is(expectedProduct.toString()));
+        assertThat(taxCalculator.taxRate(description), Is.is(expectedTaxRate));
     }
 
     @Parameterized.Parameters
