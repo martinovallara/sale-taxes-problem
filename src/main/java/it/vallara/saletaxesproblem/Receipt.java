@@ -6,6 +6,10 @@ public class Receipt {
 
     private final ArrayList<Product> products;
 
+    public static Receipt buildReceipt() {
+        return new Receipt();
+    }
+
     public Receipt() {
         this.products = new ArrayList<Product>();
     }

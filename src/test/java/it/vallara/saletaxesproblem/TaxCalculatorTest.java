@@ -1,11 +1,5 @@
 package it.vallara.saletaxesproblem;
 
-import org.hamcrest.core.Is;
-import org.junit.Test;
-
-import static it.vallara.saletaxesproblem.ProductTest.BuildProduct;
-import static org.junit.Assert.*;
-
 public class TaxCalculatorTest {
 
 /*
