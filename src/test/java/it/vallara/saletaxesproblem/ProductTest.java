@@ -9,27 +9,39 @@ public class ProductTest {
 
     @Test
     public void totalPrice_should_be_product_price_when_one_quantity() {
-        Product product = new Product(1, "any desc", 5, new TaxFreeCalculator());
+        Product product = BuildTaxFreeProduct(1, "any desc", 5);;
 
         assertThat(product.totalPrice(), Is.is(5.0));
     }
 
     @Test
     public void totalPrice_should_be_twice_the_product_price_when_two_quantities() {
-        Product product = new Product(2, "any desc",  5, new TaxFreeCalculator());
+        Product product = BuildTaxFreeProduct(2, "any desc", 5);
 
         assertThat(product.totalPrice(), Is.is(10.0));
     }
 
     @Test
     public void totalPrice_should_include_taxes_for_one_quantity_of_taxed_product() {
-        Product product = new Product(1, "any desc", 5, new ConstantTaxCalculator(0.5));
+        Product product = BuildFixedTaxedProduct(1, "any desc", 5, 0.5);
         assertThat(product.totalPrice(), Is.is(5.5));
     }
 
     @Test
     public void totalPrice_should_include_taxes_for_two_quantities_of_taxed_product() {
-        Product product = new Product(2, "any desc", 5, new TaxCalculator());
+        Product product = BuildTaxedProduct(2, "any desc", 5);
         assertThat(product.totalPrice(), Is.is(11.0));
+    }
+
+    private Product BuildTaxedProduct(int quantity, String description, int price) {
+        return new Product(quantity, description, price, new TaxCalculator());
+    }
+
+    private Product BuildTaxFreeProduct(int quantity, String description, int price) {
+        return new Product(quantity, description, price, new TaxFreeCalculator());
+    }
+
+    private static Product BuildFixedTaxedProduct(int quantity, String description, int price, double taxRate) {
+        return new Product(quantity, description, price, new ConstantTaxCalculator(taxRate));
     }
 }

@@ -32,7 +32,7 @@ public class ReceiptTest {
     @Test
     public void should_build_receipt_when_two_products() {
         Receipt receipt = new Receipt();
-        receipt.addProduct(new Product(2, "book",  12.49, new TaxCalculator()));
+        receipt.addProduct(new Product(2, "book",  12.49, new TaxFreeCalculator()));
         String expected =
                 "2 book: 24.98\n" +
                         "Sales Taxes: 0.00\n" +
