@@ -5,7 +5,7 @@ public class CashRegister {
     private final Receipt receipt;
 
     public static CashRegister CashRegisterFactory() {
-        return new CashRegister(new Receipt(), new LineParser(new ProductFactory(new TaxCalculator())));
+        return new CashRegister(new Receipt(), new LineParser(new ProductFactory(new TaxRateDiscriminator())));
     }
 
     public CashRegister(Receipt receipt, LineParser lineParser) {

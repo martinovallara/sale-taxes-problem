@@ -1,9 +1,9 @@
 package it.vallara.saletaxesproblem;
 
-public class ConstantTaxCalculator extends TaxCalculator {
+public class ConstantTaxRateDiscriminator extends TaxRateDiscriminator {
     private final double taxRate;
 
-    public ConstantTaxCalculator(double taxRate) {
+    public ConstantTaxRateDiscriminator(double taxRate) {
         this.taxRate = taxRate;
     }
 

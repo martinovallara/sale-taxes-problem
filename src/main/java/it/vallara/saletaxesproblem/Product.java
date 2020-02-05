@@ -1,17 +1,17 @@
 package it.vallara.saletaxesproblem;
 
 public class Product {
-    private TaxCalculator taxCalculator;
+    private TaxRateDiscriminator taxRateDiscriminator;
 
     private int quantity;
     private double price;
     private String description;
 
-    public Product(int quantity, String description, double price, TaxCalculator taxCalculator) {
+    public Product(int quantity, String description, double price, TaxRateDiscriminator taxRateDiscriminator) {
         this.quantity = quantity;
         this.description = description;
         this.price = price;
-        this.taxCalculator = taxCalculator;
+        this.taxRateDiscriminator = taxRateDiscriminator;
     }
 
     @Override
@@ -39,6 +39,6 @@ public class Product {
     }
 
     private double taxRate() {
-        return taxCalculator.taxRate(this.description);
+        return taxRateDiscriminator.taxRate(this.description);
     }
 }

@@ -17,6 +17,10 @@ public class LineParser {
         this.productFactory = productFactory;
     }
 
+    public static LineParser buildLineParser() {
+        return new LineParser(new ProductFactory(new TaxRateDiscriminator()));
+    }
+
     public Product parse(String line) {
         List<String> lineArgs = Arrays.asList(line.split(" "));
         int quantity = Integer.parseInt(lineArgs.get(0));
@@ -24,7 +28,6 @@ public class LineParser {
         String productWithoutQuantity = String.join(" ", wordWithoutQuantity);
         description = productWithoutQuantity.split("at ")[0].trim();
         double price = Double.parseDouble(line.split("at ")[1]);
-
 
         return productFactory.build(quantity, description, price);
     }

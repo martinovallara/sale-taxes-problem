@@ -3,12 +3,12 @@ package it.vallara.saletaxesproblem;
 import java.util.Arrays;
 import java.util.List;
 
-public class TaxCalculator {
+public class TaxRateDiscriminator {
 
     private List<String> taxfreeProducts;
     public static final double STANDARD_TAX_RATE = 0.1;
 
-    public TaxCalculator() {
+    public TaxRateDiscriminator() {
         taxfreeProducts = Arrays.asList(new String[]{
                 "book",
                 "apple",

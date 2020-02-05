@@ -1,6 +1,6 @@
 package it.vallara.saletaxesproblem;
 
-public class TaxFreeCalculator extends TaxCalculator {
+public class TaxFreeRateDiscriminator extends TaxRateDiscriminator {
     
     public double taxRate(String description){
         return 0.0;

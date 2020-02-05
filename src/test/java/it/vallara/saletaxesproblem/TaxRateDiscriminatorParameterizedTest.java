@@ -12,18 +12,18 @@ import java.util.Collection;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class TaxCalculatorParameterizedTest {
+public class TaxRateDiscriminatorParameterizedTest {
 
     private final String description;
     private final double expectedTaxRate;
-    private TaxCalculator taxCalculator;
+    private TaxRateDiscriminator taxRateDiscriminator;
 
     @Before
     public void setUp() {
-        taxCalculator = new TaxCalculator();
+        taxRateDiscriminator = new TaxRateDiscriminator();
     }
 
-    public TaxCalculatorParameterizedTest(String description, double expectedTaxRate) {
+    public TaxRateDiscriminatorParameterizedTest(String description, double expectedTaxRate) {
         this.description = description;
         this.expectedTaxRate = expectedTaxRate;
     }
@@ -31,7 +31,7 @@ public class TaxCalculatorParameterizedTest {
     @Test
     public void should_create_a_product_with_tax_rate() {
 
-        assertThat(taxCalculator.taxRate(description), Is.is(expectedTaxRate));
+        assertThat(taxRateDiscriminator.taxRate(description), Is.is(expectedTaxRate));
     }
 
     @Parameterized.Parameters

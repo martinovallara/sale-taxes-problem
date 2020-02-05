@@ -14,7 +14,7 @@ public class LineParserTest {
 
     @Before
     public void setUp() {
-        parser = new LineParser(new ProductFactory(new TaxCalculator()));
+        parser = LineParser.buildLineParser();
     }
 
     @Test
@@ -39,7 +39,7 @@ public class LineParserTest {
     @Test
     public void should_create_a_product_with_tax_rate() {
         Product product = parser.parse("10 music CD at 5");
-        Product expectedProduct = buildFixedTaxedProduct(10, "music CD", 5.0, TaxCalculator.STANDARD_TAX_RATE);
+        Product expectedProduct = buildFixedTaxedProduct(10, "music CD", 5.0, TaxRateDiscriminator.STANDARD_TAX_RATE);
 
         assertThat(product.toString(), Is.is(expectedProduct.toString()));
     }
