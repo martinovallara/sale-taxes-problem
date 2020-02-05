@@ -1,6 +1,5 @@
 package it.vallara.saletaxesproblem;
 
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,20 +30,22 @@ public class TaxRateDiscriminatorParameterizedTest {
     @Test
     public void should_create_a_product_with_tax_rate() {
 
-        assertThat(taxRateDiscriminator.taxRate(description), Is.is(expectedTaxRate));
+        assertEquals(expectedTaxRate, taxRateDiscriminator.taxRate(description), 0.001);
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"book", 0.0},
-                {"apple", 0.0},
-                {"cache", 0.0},
-                {"milk", 0.0},
-                {"headache pills", 0.0},
-                {"bottle of perfume", 0.1},
-                {"pen", 0.1},
-                {"other", 0.1}
+                {"book", 0.00},
+                {"apple", 0.00},
+                {"cache", 0.00},
+                {"milk", 0.00},
+                {"headache pills", 0.00},
+                {"bottle of perfume", 0.10},
+                {"pen", 0.10},
+                {"other", 0.10},
+                {"imported other", 0.15},
+                {"imported book", 0.05}
         });
     }
 }
