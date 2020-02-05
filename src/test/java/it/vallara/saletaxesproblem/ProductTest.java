@@ -21,7 +21,7 @@ public class ProductTest {
 
     @Test
     public void totalPrice_should_include_taxes_for_one_quantity_of_taxed_product() {
-        Product product = ProductFactory.buildFixedTaxedProduct(1, "any desc", 5, 0.5);
+        Product product = ProductFactory.buildFixedTaxedProduct(1, "any desc", 5, 0.1);
         assertThat(product.totalPrice(), Is.is(5.5));
     }
 
@@ -30,5 +30,4 @@ public class ProductTest {
         Product product = ProductFactory.buildTaxedProduct(2, "any desc", 5);
         assertThat(product.totalPrice(), Is.is(11.0));
     }
-
 }

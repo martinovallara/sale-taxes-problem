@@ -7,7 +7,7 @@ public class ConstantTaxRateDiscriminator extends TaxRateDiscriminator {
         this.taxRate = taxRate;
     }
 
-    public double taxRate(){
+    public double taxRate(String description){
         return taxRate;
     }
 }
