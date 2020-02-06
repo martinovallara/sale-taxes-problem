@@ -3,8 +3,7 @@ package it.vallara.saletaxesproblem;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import static it.vallara.saletaxesproblem.ProductFactory.buildProduct;
-import static it.vallara.saletaxesproblem.ProductFactory.buildTaxedProduct;
+import static it.vallara.saletaxesproblem.ProductFactory.*;
 import static it.vallara.saletaxesproblem.Receipt.*;
 import static org.junit.Assert.assertThat;
 
@@ -47,7 +46,7 @@ public class ReceiptTest {
     @Test
     public void should_build_receipt_when_two_taxed_products() {
         Receipt receipt = buildReceipt();
-        receipt.addProduct(buildTaxedProduct(2, "music CD", 10.0));
+        receipt.addProduct(buildFixedTaxedProduct(2, "music CD", 10.0, 0.10));
         String expected =
                 "2 music CD: 22.00\n" +
                         "Sales Taxes: 2.00\n" +

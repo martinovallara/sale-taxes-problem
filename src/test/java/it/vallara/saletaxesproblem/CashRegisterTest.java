@@ -7,7 +7,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class CashRegisterTest {
-    
+
     @Test
     public void should_print_receipt_for_product_without_taxes() {
         String input = "1 book at 10.00";
