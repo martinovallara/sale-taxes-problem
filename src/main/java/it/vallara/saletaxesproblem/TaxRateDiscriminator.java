@@ -19,7 +19,7 @@ public class TaxRateDiscriminator {
                 "milk",
                 "headache pills"
         });
-        taxRateConditionsTable = new ArrayList<TaxRateCondition>();
+        taxRateConditionsTable = new ArrayList<>();
 
         Condition isImported = s -> s.contains("imported");
         Condition isTaxedProduct = s -> !isTaxFree(s.replace("imported", "").trim());
@@ -34,15 +34,14 @@ public class TaxRateDiscriminator {
 
     public double taxRate(String description) {
 
+        return sumOfApplicableRates(description);
+    }
 
-
-        double result = taxRateConditionsTable.stream()
+    private Double sumOfApplicableRates(String description) {
+        return taxRateConditionsTable.stream()
                 .filter(c -> c.condition.predicate(description))
                 .map(c -> c.taxRate)
                 .reduce(0.0, Double::sum);
-
-
-        return result;
     }
 
     private void taxationRules(Condition predicate, double standardDutyTaxRate) {
