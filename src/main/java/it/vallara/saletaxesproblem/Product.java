@@ -1,5 +1,11 @@
 package it.vallara.saletaxesproblem;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
+import static it.vallara.saletaxesproblem.Receipt.FIVE_CENTs;
+
 public class Product {
     private TaxRateDiscriminator taxRateDiscriminator;
 
@@ -14,6 +20,10 @@ public class Product {
         this.taxRateDiscriminator = taxRateDiscriminator;
     }
 
+    public static BigDecimal roundUp(BigDecimal value) {
+        return value.multiply(new BigDecimal("20.00")).setScale(0, RoundingMode.UP).divide(new BigDecimal("20.00"));
+    }
+
     @Override
     public String toString() {
         return String.format("%d %s: %.2f", +
@@ -23,11 +33,11 @@ public class Product {
     }
 
     public double totalPrice() {
-        return price * quantity + totalTaxes();
+        return price * quantity + totalTaxes().doubleValue();
     }
 
-    public double totalTaxes() {
-        return quantity * taxRate() * price;
+    public BigDecimal totalTaxes() {
+        return roundUp(new BigDecimal(quantity).multiply((taxRate().multiply(new BigDecimal(price, MathContext.DECIMAL64)))));
     }
 
     public int quantity() {
@@ -38,7 +48,7 @@ public class Product {
         return description;
     }
 
-    private double taxRate() {
+    private BigDecimal taxRate() {
         return taxRateDiscriminator.taxRate(this.description);
     }
 }

@@ -65,4 +65,20 @@ public class CashRegisterTest {
         cash.addProductLine(input);
         assertThat(cash.generateReceipt(), is(expected));
     }
+
+    @Test
+    public void should_print_receipt_with_price_and_taxes_rounded_up() {
+
+        String input = "1 taxed product at 10.01";
+
+        String expected =
+                "1 taxed product: 11.06\n" +
+                        "Sales Taxes: 1.05\n" +
+                        "Total: 11.06";
+
+        CashRegister cash = CashRegister.CashRegisterFactory();
+        cash.addProductLine(input);
+        assertThat(cash.generateReceipt(), is(expected));
+    }
+
 }

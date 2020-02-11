@@ -1,5 +1,6 @@
 package it.vallara.saletaxesproblem;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,8 +8,8 @@ import java.util.List;
 public class TaxRateDiscriminator {
 
     private List<String> taxfreeProducts;
-    public static final double STANDARD_TAX_RATE = 0.10;
-    public static final double STANDARD_DUTY_TAX_RATE = 0.05;
+    public static final BigDecimal STANDARD_TAX_RATE = new BigDecimal("0.10");
+    public static final BigDecimal STANDARD_DUTY_TAX_RATE = new BigDecimal("0.05");
     private final List<TaxRateCondition> taxRateConditionsTable;
 
     public TaxRateDiscriminator() {
@@ -32,19 +33,18 @@ public class TaxRateDiscriminator {
         return taxfreeProducts.contains(description);
     }
 
-    public double taxRate(String description) {
-
+    public BigDecimal taxRate(String description) {
         return sumOfApplicableRates(description);
     }
 
-    private Double sumOfApplicableRates(String description) {
+    private BigDecimal sumOfApplicableRates(String description) {
         return taxRateConditionsTable.stream()
                 .filter(c -> c.condition.predicate(description))
                 .map(c -> c.taxRate)
-                .reduce(0.0, Double::sum);
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    private void taxationRules(Condition predicate, double standardDutyTaxRate) {
+    private void taxationRules(Condition predicate, BigDecimal standardDutyTaxRate) {
         taxRateConditionsTable.add(new TaxRateCondition(predicate, standardDutyTaxRate));
     }
 }

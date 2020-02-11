@@ -1,10 +1,13 @@
 package it.vallara.saletaxesproblem;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Receipt {
 
     private final ArrayList<Product> products;
+    public static final BigDecimal TEN_CENTs = new BigDecimal("0.10");
+    public static final BigDecimal FIVE_CENTs = new BigDecimal("0.05");
 
     public static Receipt buildReceipt() {
         return new Receipt();
@@ -29,7 +32,7 @@ public class Receipt {
                         "Total: %.2f",
                 products.stream()
                         .map(p -> p.totalTaxes())
-                        .reduce(0.0, Double::sum),
+                        .reduce(BigDecimal.ZERO, BigDecimal::add),
                 products.stream()
                         .map(i -> i.totalPrice())
                         .reduce(0.0, Double::sum));

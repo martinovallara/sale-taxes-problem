@@ -1,13 +1,15 @@
 package it.vallara.saletaxesproblem;
 
-public class ConstantTaxRateDiscriminator extends TaxRateDiscriminator {
-    private final double taxRate;
+import java.math.BigDecimal;
 
-    public ConstantTaxRateDiscriminator(double taxRate) {
+public class ConstantTaxRateDiscriminator extends TaxRateDiscriminator {
+    private final BigDecimal taxRate;
+
+    public ConstantTaxRateDiscriminator(BigDecimal taxRate) {
         this.taxRate = taxRate;
     }
 
-    public double taxRate(String description){
+    public BigDecimal taxRate(String description){
         return taxRate;
     }
 }

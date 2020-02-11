@@ -1,8 +1,10 @@
 package it.vallara.saletaxesproblem;
 
+import java.math.BigDecimal;
+
 public class TaxFreeRateDiscriminator extends TaxRateDiscriminator {
     
-    public double taxRate(String description){
-        return 0.0;
+    public BigDecimal taxRate(String description){
+        return BigDecimal.ZERO;
     }
 }
